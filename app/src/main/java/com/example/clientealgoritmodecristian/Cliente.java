@@ -38,6 +38,7 @@ public class Cliente extends Thread{
             InputStream inFromServer = cliente.getInputStream();
             DataInputStream in = new DataInputStream(inFromServer);
             tcliente = in.readLong();   //Recebe o tempo do proprio cliente
+
             t1 = in.readLong();   //Recebe o tempo real do servidor
             t2 = in.readLong();   //Recebe o tempo de resposta do servidor
             t3 = System.currentTimeMillis();
@@ -60,7 +61,7 @@ public class Cliente extends Thread{
             System.out.println("t1-t0: " + (t1-tcliente));
             System.out.println("t2-t3: " + (t2-t3));
             System.out.println("Tempo de sincronização ou defasagem: " + tsync +" milisegundos");
-            System.out.println("Horario atual ajustado: " + formataData(System.currentTimeMillis()+tsync));
+            System.out.println("Horario atual ajustado: " + formataData(t3+tsync));
             System.out.println("--------------------------------------------");
     }
     public long random(){
